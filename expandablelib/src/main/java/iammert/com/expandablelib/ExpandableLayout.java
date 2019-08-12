@@ -223,14 +223,15 @@ public class ExpandableLayout extends LinearLayout {
         renderer.renderParent(parentView, section.parent, section.expanded, sections.size() - 1);
         sectionLayout.addView(parentView);
 
-        if (section.expanded) {
+//        if (section.expanded) {
             for (int i = 0; i < section.children.size(); i++) {
                 Object child = section.children.get(i);
                 View childView = layoutInflater.inflate(childLayout, null);
                 renderer.renderChild(childView, child, sections.size() - 1, i);
+                childView.setVisibility(section.expanded ? VISIBLE:GONE);
                 sectionLayout.addView(childView);
             }
-        }
+//        }
         addView(sectionLayout);
     }
 
